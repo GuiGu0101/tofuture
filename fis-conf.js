@@ -99,7 +99,7 @@ fis.media('package-test')
 
 fis.media('release')
     .match('**', {
-        domain:'paywhere.fast.im/wap',
+        domain:'//paywhere.fast.im/wap',
         deploy: [
             fis.plugin('tar', {
                 filename: 'tofuture-' + fis.get('project.prodVersion') + '.tar.gz'
