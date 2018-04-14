@@ -1,0 +1,67 @@
+//Base Colors 基础颜色
+$wirte: #ffffff;
+$black: #333333;
+$grey-blue: #6e7ab3;
+$magenta: #d53880;
+$purple: #912888;
+$gray: #d4d7dc;
+$green: #28a197;
+$light-blue: #00acdc;
+$navy-purple: #6f72af;
+$orange-red: #fc7256;
+$yellow: #ffbf47;
+$grey-green: #8DC6BF;
+$pink: #f499be;
+$orange: #f47738;
+$orange-yellow: #ffae62;
+$dark-grey: #616161;
+$dark-blue:#6B7788;
+$main-color: #767171;
+/* Application Colors 应用颜色 */
+$qingtui-main-color: $orange-red;
+$qingtui-main-color-darken: darken($qingtui-main-color, 5%);
+$qingtui-purple-color: $navy-purple;
+$qingtui-wirte-color: #f8f8f8;
+$qingtui-purple-color-darken: darken($qingtui-purple-color, 5%);
+$font-wirte: $wirte;
+$font-black: $black;
+$font-light-black: $dark-grey;
+$input-border-focus: #6f72af;
+$input-color-placeholder: #b1b1b1;
+$input-bg-disabled: #eee;
+$background-wirte: $wirte;
+$border-radius-base: 999px;
+/* Font Size 文字大小 */
+$title-large: 44px;
+$title-middle: 36px;
+$title-small: 22px;
+$desc-large: 22px;
+$desc-normal: 18px;
+$desc-small: 14px;
+$default-line-height: 1.5;
+/* Media Query 媒体查询 */
+$media-mac: 1440px; //Mac Pro及19吋显示器分辨率
+$media-xp:1024px; //一般xp用户的屏幕分辨率
+$media-tables: 535px; //大于该宽度小于mac分辨率为平板
+/* clear float 清除浮动 */
+@mixin cleanBoth {
+    display: block;
+    content: "\200b";
+    height: 0;
+    clear: both;
+}
+@mixin cleanBothInAfter {
+    &::after {
+        @include cleanBoth;
+    }
+}
+@function compact($var-1, $var-2: false, $var-3: false, $var-4: false, $var-5: false, $var-6: false, $var-7: false, $var-8: false, $var-9: false, $var-10: false) {
+    $full: $var-1;
+    $vars: $var-2, $var-3, $var-4, $var-5, $var-6, $var-7, $var-8, $var-9, $var-10;
+    @each $var in $vars {
+        @if $var {
+            $full: $full, $var;
+        }
+    }
+    @return $full;
+}

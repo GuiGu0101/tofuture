@@ -1,0 +1,45 @@
+@import "variables";
+@import "compass/css3";
+.download-app {
+    color: $main-color;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed #ccc;
+    margin: 0 12px;
+    .background{
+        background: url('static/images/webbg.png') repeat;
+        background-size: 43px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        opacity: .9;
+    }
+    .logo-area {
+        
+        .logo,
+        .logo-title {
+            float: left;
+        }
+        .logo>img {
+            height: 48px;
+        }
+        .logo-title>img{
+            margin-top:6px;
+            height: 36px;
+        }
+        @include cleanBothInAfter();
+    }
+    .download-btn {
+        position: absolute;
+        right: 0;
+        top: 12px;
+        img{
+            height: 24px;
+        }
+    }
+}

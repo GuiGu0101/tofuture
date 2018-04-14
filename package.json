@@ -1,0 +1,31 @@
+{
+  "name": "kongzu-tofuture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "devDependencies": {
+    "fis-parser-marked": "0.0.6",
+    "fis-parser-node-sass-qt": "^1.0.1",
+    "fis-parser-utc": "0.0.2",
+    "fis-postprocessor-autoprefixer": "0.0.5",
+    "fis3-deploy-http-push": "^1.0.3",
+    "fis3-deploy-smart-alioss": "^0.0.2",
+    "fis3-deploy-tar": "^1.0.1",
+    "fis3-hook-amd": "~0.1.2",
+    "fis3-hook-commonjs": "^0.1.15",
+    "fis3-packager-deps-pack": "~0.0.1",
+    "fis3-postpackager-loader": "^1.3.17",
+    "fis3-server-browsersync": "^1.3.11"
+  },
+  "scripts": {
+    "start": "fis3 server start --type browsersync && fis3 release -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:test": "fis3 release cicd-test --no-color -u"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@qtgit.qingtui.im:frontend/qt-fe-qthome.git"
+  },
+  "author": "guigu",
+  "license": "ISC"
+}
