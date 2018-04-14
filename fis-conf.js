@@ -102,7 +102,7 @@ fis.media('release')
         domain:'paywhere.fast.im/wap',
         deploy: [
             fis.plugin('tar', {
-                filename: 'qtindex-' + fis.get('project.prodVersion') + '.tar.gz'
+                filename: 'tofuture-' + fis.get('project.prodVersion') + '.tar.gz'
             }),
             fis.plugin('local-deliver', {
                 to: './output'
@@ -117,7 +117,7 @@ fis.media('release')
             content = content.replace(/\r\n\s*/g, ' ');
             content = content.replace(/\n\s*/g, ' ');
             //增加jpg转换代码
-            content = content.replace(/\.jpg"/g, '.jpg?x-oss-process=image/format,jpg/interlace,1&version='+ fis.get('project.prodVersion') +'"');
+            content = content.replace(/\.jpg"/g, '.jpg?version='+ fis.get('project.prodVersion') +'"');
             //增加png版本代码
             content = content.replace(/\.png"/g, '.png?version='+ fis.get('project.prodVersion') +'"');
             return content;
