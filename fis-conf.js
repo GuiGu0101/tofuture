@@ -135,8 +135,7 @@ fis.media('release')
     })
     .match('::package', {
         // 关于打包配置，请参考：https://github.com/fex-team/fis3-packager-deps-pack
-        packager: fis.plugin('deps-pack', package_option),
-        spriter: fis.plugin('csssprites')
+        packager: fis.plugin('deps-pack', package_option)
     })
     .match('*.js', {
         optimizer: fis.plugin('uglify-js'),

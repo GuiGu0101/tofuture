@@ -129,53 +129,56 @@ function getParams(url) {
     }
     return vars;
 }
-
-var audioFile = $('#audioFile');
-var audioFileDom = audioFile[0];
-var SW;
-var param = getParams()
-audioFile.on('canplay', function () {
-    $('.audio-dispaly').empty();
-    SW = new SiriWave({
-        width: $(document).width() - 40 - 12 - 12,
-        height: 40,
-        noise: 0.6,
-        container: $('.audio-dispaly')[0],
+$(document).ready(function () {
+    var audioDisplay = $('.audio-dispaly');
+    var audioFile = $('#audioFile');
+    var audioFileDom = audioFile[0];
+    var SW;
+    var param = getParams()
+    audioFile.on('canplay', function () {
+        $('.audio-dispaly').empty();
+        SW = new SiriWave({
+            width: audioDisplay.width(),
+            height: 40,
+            noise: 0.6,
+            container: audioDisplay[0],
+        });
     });
-});
-console.log(param)
-if (param.id) {
-    $.ajax({
-        url: 'http://paywhere.fast.im/index.php/home/Future/getShare',
-        data: {
-            id: param.id
-        },
-        dataType: 'json',
-        success: function (data) {
-            if (data.status === 0 && data.data) {
-                var mail = data.data[0];
-                audioFile.attr('src', mail.music_url);
-                $('#content').text(mail.content)
+    console.log(param)
+    if (param.id) {
+        $.ajax({
+            url: 'http://paywhere.fast.im/index.php/home/Future/getShare',
+            data: {
+                id: param.id
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.status === 0 && data.data) {
+                    var mail = data.data[0];
+                    audioFile.attr('src', mail.music_url);
+                    $('#content').text(mail.content)
+                }
             }
-        }
 
-    })
+        })
 
-    $('.play-btn').click(function () {
-        var that = $(this);
-        if (that.hasClass('paused')) {
-            $(this).removeClass('paused').addClass('playing');
-            audioFileDom.play();
-            SW && SW.start();
-        } else {
-            $(this).removeClass('playing').addClass('paused');
-            audioFileDom.pause();
-            SW && SW.stop();
-        }
+        $('.play-btn').click(function () {
+            var that = $(this);
+            if (that.hasClass('paused')) {
+                $(this).removeClass('paused').addClass('playing');
+                audioFileDom.play();
+                SW && SW.start();
+            } else {
+                $(this).removeClass('playing').addClass('paused');
+                audioFileDom.pause();
+                SW && SW.stop();
+            }
 
-    })
-}else{
-    $('#content').text('没有数据');
-    $('.audio-dispaly span').text('没有音频');
-}
+        })
+    } else {
+        $('#content').text('没有数据');
+        $('.audio-dispaly span').text('没有音频');
+    }
+})
+
 

@@ -3,26 +3,6 @@
 @import "compass/functions";
 @import "compass/reset";
 
-@font-face {
-    font-family: 'FZLanTingHei20170908';
-    src: url('../fonts/FZLanTingHei.eot');
-    src: url('../fonts/FZLanTingHei.eot?#font-spider') format('embedded-opentype'),
-    url('../fonts/FZLanTingHei.woff') format('woff'),
-    url('../fonts/FZLanTingHei.ttf') format('truetype'),
-    url('../fonts/FZLanTingHei.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "iconfont";
-    src: url('../fonts/iconfont.eot?t=1504866765994'); /* IE9*/
-    src: url('../fonts/iconfont.eot?t=1504866765994#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/iconfont.woff?t=1504866765994') format('woff'),
-    url('../fonts/iconfont.ttf?t=1504866765994') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('../fonts/iconfont.svg?t=1504866765994#iconfont') format('svg'); /* iOS 4.1- */
-}
-
 img {
     display: block;
 }
@@ -46,75 +26,6 @@ img {
     border: 1px solid #efefef;
 }
 
-.iconfont {
-    font-family: "iconfont" !important;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    // margin-top: -3px;
-}
-
-.icon-zhedie:before {
-    content: "\e603";
-}
-
-.icon-apple:before {
-    content: "\e600";
-}
-
-.icon-appstore:before {
-    content: "\e601";
-}
-
-.icon-ipad:before {
-    content: "\e602";
-}
-
-.icon-microsoft:before {
-    content: "\e604";
-}
-
-.icon-website:before {
-    content: "\e605";
-}
-
-.icon-anzhuo:before {
-    content: "\e606";
-}
-
-.icon-bofang:before {
-    content: "\e608";
-}
-
-.icon-arrow-down:before {
-    content: "\e67b";
-}
-
-.icon-close-circel:before {
-    content: "\e67c";
-}
-
-.icon-play:before {
-    content: "\e693";
-}
-
-.icon-group:before {
-    content: "\e694";
-}
-
-.icon-xiezuo:before {
-    content: "\e695";
-}
-
-.icon-huojian:before {
-    content: "\e696";
-}
-
-.icon-yidongbangong:before {
-    content: "\e697";
-}
-
 * {
     @include box-sizing(border-box);
     -webkit-tap-highlight-color: transparent;
@@ -126,9 +37,6 @@ div {
 
 body {
     font-family: "PingHei Light", "Microsoft YaHei Light", "微软雅黑", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    // -webkit-font-smoothing: antialiased;
-    // -webkit-text-stroke-width: 0.2px;
-    // -moz-osx-font-smoothing: grayscale;
     background: url('../images/webbg.png') repeat;
     background-size: 43px;
 }
@@ -145,16 +53,21 @@ h1 {
     padding: 6px 16px;
     position: relative;
     color: $main-color;
+    text-shadow: 0 0 1px lighten($main-color, 20%);
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.8;
     @include box-sizing(border-box);
 }
 .audio-area{
-    margin: 6px 12px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6px 16px;
     display: flex;
     .audio-dispaly{
         color: $main-color;
         font-size: 14px;
+        flex: 1;
         >span{
             margin-left: 12px;
             line-height: 40px;
@@ -163,6 +76,7 @@ h1 {
     .play-btn{
         width: 40px;
         height: 40px;
+        flex: 0 0 auto;
         &.paused{
             background-image: url('../images/img_play.png');
             background-size: 24px;
