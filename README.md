@@ -23,11 +23,7 @@
   fis3 release release
   ```
 
-  编译正式环境时，会在本地目录`D:/work/output/newhome`下分别生成一个以`newhome_<时间戳>_cdn`和`newhome_<时间戳>_ecs`格式命名的文件夹。
-
-  cdn文件夹下为静态资源，会同时自动发布至静态资源OSS服务器`static`。
-
-  ecs文件夹下为静态页面，发布至生成环境即可。
+  编译正式环境时，会在项目目录下分别生成一个`output`文件夹,并按照版本号自动打包。
 
 ## 其他
 
