@@ -2,7 +2,6 @@
 @import "compass/css3";
 @import "compass/functions";
 @import "compass/reset";
-
 img {
     display: block;
 }
@@ -49,50 +48,46 @@ h1 {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto 48px auto;
-
     padding: 6px 16px;
     position: relative;
     color: $main-color;
     text-shadow: 0 0 1px lighten($main-color, 20%);
     font-size: 16px;
     line-height: 1.8;
+    text-align: justify;
     @include box-sizing(border-box);
 }
-.audio-area{
+
+.audio-area {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
+    margin: 6px auto 0 auto;
     padding: 6px 16px;
     display: flex;
-    .audio-dispaly{
+    .audio-dispaly {
         color: $main-color;
         font-size: 14px;
         flex: 1;
-        >span{
+        >span {
             margin-left: 12px;
             line-height: 40px;
         }
     }
-    .play-btn{
+    .play-btn {
         width: 40px;
         height: 40px;
         flex: 0 0 auto;
-        &.paused{
+        background-size: 24px;
+        background-repeat: no-repeat;
+        background-position: center left;
+        &.paused {
             background-image: url('../images/img_play.png');
-            background-size: 24px;
-            background-repeat: no-repeat;
-            background-position: center;
         }
-        &.playing{
+        &.playing {
             background-image: url('../images/img_stop.png');
-            background-size: 24px;
-            background-repeat: no-repeat;
-            background-position: center;
         }
     }
 }
-
-
 
 @include keyframes(fadeIn) {
     0% {

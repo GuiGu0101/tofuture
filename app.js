@@ -129,13 +129,27 @@ function getParams(url) {
     }
     return vars;
 }
+function changeHtml(value){
+    value = value.replace(/&/g, "&amp;");
+    value = value.replace(/\t/g, "&nbsp;&nbsp;");//水平制表
+    value = value.replace(/ /g, "&nbsp;");//空格
+    value = value.replace(/</g, "&lt;");
+    value = value.replace(/\>/g, "&gt;");
+    value = value.replace(/\"/g, "&quot;");//英文引号
+    value = value.replace(/\r\n/g,"<br/>");//换行
+    value = value.replace(/\n/g,"<br/>");//换行
+    value = value.replace(/\\n/g,"<br/>");//换行
+
+    return value;
+}
 $(document).ready(function () {
     var audioDisplay = $('.audio-dispaly');
     var audioFile = $('#audioFile');
     var audioFileDom = audioFile[0];
     var SW;
     var param = getParams()
-    audioFile.on('canplay', function () {
+    audioFile.one('canplay', function () {
+        console.log('audio canplay')
         $('.audio-dispaly').empty();
         SW = new SiriWave({
             width: audioDisplay.width(),
@@ -143,6 +157,16 @@ $(document).ready(function () {
             noise: 0.6,
             container: audioDisplay[0],
         });
+    });
+    audioFile.on('play', function () {
+        console.log('audio play')
+        $('.play-btn').removeClass('paused').addClass('playing');
+        SW && SW.start();
+    });
+    audioFile.on('pause', function () {
+        console.log('audio stop')
+        $('.play-btn').removeClass('playing').addClass('paused');
+        SW && SW.stop()
     });
     console.log(param)
     if (param.id) {
@@ -156,7 +180,7 @@ $(document).ready(function () {
                 if (data.status === 0 && data.data) {
                     var mail = data.data[0];
                     audioFile.attr('src', mail.music_url);
-                    $('#content').text(mail.content)
+                    $('#content').html(changeHtml(mail.content));
                 }
             }
 
@@ -165,13 +189,9 @@ $(document).ready(function () {
         $('.play-btn').click(function () {
             var that = $(this);
             if (that.hasClass('paused')) {
-                $(this).removeClass('paused').addClass('playing');
                 audioFileDom.play();
-                SW && SW.start();
             } else {
-                $(this).removeClass('playing').addClass('paused');
                 audioFileDom.pause();
-                SW && SW.stop();
             }
 
         })

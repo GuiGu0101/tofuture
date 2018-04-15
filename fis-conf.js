@@ -1,9 +1,9 @@
 // 增加静态目录变量
 fis.set('statics', 'static');
 fis.set('namespace', '');
-fis.set('project.version', '1.0.0');
-fis.set('project.qaVersion', '1.0.0');
-fis.set('project.prodVersion', '1.0.0');
+fis.set('project.version', '1.0.1');
+fis.set('project.qaVersion', '1.0.1');
+fis.set('project.prodVersion', '1.0.1');
 // 标记 staitc/libs 下面的 js 为模块化代码。
 fis.match('/static/libs/**.js', {
     isMod: true
