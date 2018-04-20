@@ -146,17 +146,15 @@ $(document).ready(function () {
     var audioDisplay = $('.audio-dispaly');
     var audioFile = $('#audioFile');
     var audioFileDom = audioFile[0];
-    var SW;
+    var SW = new SiriWave({
+        width: audioDisplay.width(),
+        height: 40,
+        noise: 0.6,
+        container: audioDisplay[0],
+    });
     var param = getParams()
     audioFile.one('canplay', function () {
         console.log('audio canplay')
-        $('.audio-dispaly').empty();
-        SW = new SiriWave({
-            width: audioDisplay.width(),
-            height: 40,
-            noise: 0.6,
-            container: audioDisplay[0],
-        });
     });
     audioFile.on('play', function () {
         console.log('audio play')
@@ -180,6 +178,7 @@ $(document).ready(function () {
                 if (data.status === 0 && data.data) {
                     var mail = data.data[0];
                     audioFile.attr('src', mail.music_url);
+                    audioFileDom.load();
                     $('#content').html(changeHtml(mail.content));
                 }
             }
